@@ -38,11 +38,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.io.IOException;
 import java.util.List;
 
-public class
-
-
-
-MapsActivity extends FragmentActivity implements OnMapReadyCallback,
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener,
@@ -50,12 +46,12 @@ MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleMap.OnMarkerDragListener
 {
 
-    private GoogleMap mMap;
+    public GoogleMap mMap;
     private GoogleApiClient client;
     private LocationRequest locationRequest;
     private  Location lastLocation;
     private Marker currentLocationMarker;
-    double latitude,longitude;
+    public double latitude,longitude;
     double end_latitude,end_longitude;
     double check1,check2;
     int PROXIMITY_RADIUS=5000;
@@ -125,6 +121,7 @@ MapsActivity extends FragmentActivity implements OnMapReadyCallback,
 
        mMap.setOnMarkerDragListener(this);
        mMap.setOnMarkerClickListener(this);
+
 
     }
 
@@ -200,9 +197,9 @@ MapsActivity extends FragmentActivity implements OnMapReadyCallback,
               break;
 
             case R.id.ar_button:
-                Intent i = new Intent(getApplicationContext(),Ar_Activity.class);
+                Intent i = new Intent(getApplicationContext(),WikiActivity.class);
                 startActivity(i);
-                setContentView(R.layout.activity_ar_);
+                setContentView(R.layout.activity_wiki);
 
 
         }

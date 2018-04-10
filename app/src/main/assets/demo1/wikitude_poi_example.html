@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<script src="https://www.wikitude.com/libs/architect.js"></script>
+	</head>
+	
+	<body>
+	</body>
+	
+	<script>
+
+		var added = false;	// Flag to hold whether markers have been added
+		var poiOne;		// Reference to the first poin of interest
+		var poiTwo;		// Reference to the second point of interest
+
+AR.logger.activateDebugMode();
+		AR.logger.debug("starting");
+		// Called when location changes
+	//	function locationChanged(lat, lon, alt, acc){
+			
+			// First time the function runs wer add the markers
+			if (!added){
+
+				AR.logger.debug("markers");
+				// ------ First Marker ----------
+				
+				// create the image for the marker
+				var marker_image = new AR.ImageResource("assets/indi.png");
+				var indicatorImage = new AR.ImageResource("assets/indi.png");
+				// create the marker location
+				var marker_loc = new AR.GeoLocation(13.0508849,74.9661632);
+				//var marker_loc = new AR.RelativeLocation(null, 5, 0, 2);
+				 var indicatorDrawable = new AR.ImageDrawable(indicatorImage, 0.1, {
+            verticalAnchor: AR.CONST.VERTICAL_ANCHOR.TOP
+        });
+				// create the drawable (set display parameters of the image - just size here)
+				var marker_drawable = new AR.ImageDrawable(marker_image, 5);
+	
+				// create GeoObject (also adds to the display)
+				poiOne = new AR.GeoObject(marker_loc, {
+					drawables: {
+						cam: [marker_drawable],
+						indicator: [indicatorDrawable]
+
+					}
+				});
+
+				// ------ Second Marker ----------
+
+				// create the image for the marker
+				var marker_image2 = new AR.ImageResource("assets/indi.png");
+
+				// create the marker location
+				//var marker_loc2 = new AR.GeoLocation(lat+0.002699, lon+0.002294, alt);
+				var marker_loc2 = new AR.RelativeLocation(null, 5, 0, 2);
+
+				// create the drawable (set display parameters of the image - just size here)
+				var marker_drawable2 = new AR.ImageDrawable(marker_image2, 5);
+	
+				// create GeoObject (also adds to the display)
+				poiTwo = new AR.GeoObject(marker_loc2, {
+					drawables: {
+						cam: [marker_drawable2]
+					}
+				});
+				
+				added = true;	// Store that markers were added
+				
+				AR.logger.debug("markers added");
+			}
+			else {
+				// Each other time position is changed we update
+				//  location is stored in an array (not sure why)
+
+				poiOne.locations[0].latitude = lat+0.000688;
+				poiOne.locations[0].longitude = lon+0.001905;
+				poiOne.locations[0].altitude = alt;
+
+				poiTwo.locations[0].latitude = lat+0.002699;
+				poiTwo.locations[0].longitude = lon+0.002294;
+				poiTwo.locations[0].altitude = alt;
+
+				AR.logger.debug("markers updated");
+			}
+	//	}
+	
+
+	
+		// Set which function is called when the location changes
+		AR.context.onLocationChanged = locationChanged;
+
+	
+	</script>
+	
+</html>
