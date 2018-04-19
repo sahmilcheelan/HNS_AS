@@ -115,14 +115,14 @@ public class DataParser {
         return getPaths(jsonArray);
     }
 
-    public String[] getPaths(JSONArray googleStepsJason)
+    public String[] getPaths(JSONArray googleStepsJson)
     {
-        int count=googleStepsJason.length();
+        int count=googleStepsJson.length();
         String[] polylines=new String[count];
         for (int i=0;i<count;i++)
         {
             try {
-                polylines[i]=getPath(googleStepsJason.getJSONObject(i));
+                polylines[i]=getPath(googleStepsJson.getJSONObject(i));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

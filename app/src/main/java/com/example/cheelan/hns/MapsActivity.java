@@ -192,8 +192,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
               getDirectionsData.execute(dataTransfer);
 
-
-
               break;
 
             case R.id.ar_button:
