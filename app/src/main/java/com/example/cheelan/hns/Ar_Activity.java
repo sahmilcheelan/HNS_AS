@@ -30,7 +30,7 @@ import java.util.ArrayList;
         private GoogleMapWorldPlugin mGoogleMapPlugin;
 
         GoogleMap mMap;
-
+        public double lat,lon;
 
         // ...
         @Override
@@ -44,6 +44,9 @@ import java.util.ArrayList;
             // private Context context;
             MapsActivity mapsActivity=new MapsActivity();
 
+
+            lat=mapsActivity.lastLocation.getLatitude();
+            lon=mapsActivity.longitude;
             World world = new World(this);
 
 
@@ -53,7 +56,8 @@ import java.util.ArrayList;
 
 // User position (you can change it using the GPS listeners form Android
 // API)
-            world.setGeoPosition(11.998753,75.269814);
+//world.setGeoPosition(13.128628403018228d,74.89088584566348d);
+            world.setGeoPosition(41.26533734214473d,1.925848038959814d);
 
             mGoogleMapPlugin = new GoogleMapWorldPlugin(this);
             world.addPlugin(mGoogleMapPlugin);
@@ -67,7 +71,8 @@ import java.util.ArrayList;
 
             // Is it also possible to load the image asynchronously form internet
             GeoObject go2 = new GeoObject(2l);
-            go2.setGeoPosition(11.998753,75.269814);
+            go2.setGeoPosition(13.128628403018228d+0.05,
+                    74.89088584566348d);
             go2.setImageResource(R.drawable.test_2);
             go2.setName("Online image");
             // Also possible to get images from the SDcard
@@ -78,7 +83,7 @@ import java.util.ArrayList;
 
             // And the same goes for the app assets
             GeoObject go4 = new GeoObject(4l);
-            go4.setGeoPosition(11.987467,75.275876);
+            go4.setGeoPosition(11.987467d,75.275876d);
             go4.setImageResource(R.drawable.test_4);
             go4.setName("Image from assets");
 
@@ -101,7 +106,7 @@ import java.util.ArrayList;
         public void onClickBeyondarObject(ArrayList<BeyondarObject> beyondarObjects) {
             // The first element in the array belongs to the closest BeyondarObject
 
-            Toast.makeText(this, "Clicked on: " + beyondarObjects.get(0).getPosition(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Clicked on: " + lat, Toast.LENGTH_LONG).show();
         }
 
         @Override

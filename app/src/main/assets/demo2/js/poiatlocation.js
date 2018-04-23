@@ -2,10 +2,17 @@
 var World = {
 	// true once data was fetched
 	initiallyLoadedData: false,
-
+/*	var poiData = {
+				"id": 1,
+				"longitude": (13.0538109 + (Math.random() / 5 - 0.1)),
+				"latitude": (74.9722021 + (Math.random() / 5 - 0.1)),
+				"altitude": 13
+			};,
 	// POI-Marker asset
 	markerDrawable_idle: null,
-
+init: function initFn() {
+		World.loadPoisFromJsonData(poiData);
+	},*/
 	// called to inject new POI data
 	loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
 
@@ -18,29 +25,22 @@ var World = {
 			For creating the marker a new object AR.GeoObject will be created at the specified geolocation. An AR.GeoObject connects one or more AR.GeoLocations with multiple AR.Drawables. The AR.Drawables can be defined for multiple targets. A target can be the camera, the radar or a direction indicator. Both the radar and direction indicators will be covered in more detail in later examples.
 		*/
 		var markerLocation = new AR.GeoLocation(poiData.latitude, poiData.longitude, poiData.altitude);
-		//var markerLocation = new AR.GeoLocation(13.0452743,74.9700106,13);
-		//var markerLocation = new AR.GeoLocation(11.0516533,72.9714383,13);
+		//var markerLocation = new AR.GeoLocation(13.0538109,74.9722021,13);
 
 		var markerImageDrawable_idle = new AR.ImageDrawable(World.markerDrawable_idle, 2.5, {
 			zOrder: 0,
 			opacity: 1.0
 		});
 
- var indicatorImage = new AR.ImageResource("assets/indi.png");
-
-        var indicatorDrawable = new AR.ImageDrawable(indicatorImage, 0.1, {
-            verticalAnchor: AR.CONST.VERTICAL_ANCHOR.TOP
-        });
 		// create GeoObject
 		var markerObject = new AR.GeoObject(markerLocation, {
 			drawables: {
-				cam: [markerImageDrawable_idle],
-				 indicator: [indicatorDrawable]
+				cam: [markerImageDrawable_idle]
 			}
 		});
 
 		// Updates status message as a user feedback that everything was loaded properly.
-		World.updateStatusMessage('1 place loaded @'+markerLocation);
+		World.updateStatusMessage('1 place loaded @'+ markerLocation.latitude + 'and' + poiData.longitude);
 	},
 
 	// updates status message shown in small "i"-button aligned bottom center
@@ -68,12 +68,11 @@ var World = {
 			// creates a poi object with a random location near the user's location
 			var poiData = {
 				"id": 1,
-				"longitude": (lon + (Math.random() / 5 - 0.1)),
-				"latitude": (lat + (Math.random() / 5 - 0.1)),
-
-				//"longitude": (13.0452743),
-               // "latitude": (74.9700106),
-				"altitude": 100.0
+				//"longitude": (74.89088584566348),
+				//"latitude": ( 13.128628403018228),
+				"longitude":(74.8908858 + (Math.random() / 5-0.1)),
+				"latitude":(13.1286284+(Math.random() / 5-0.1)),
+				"altitude": 16.0
 			};
 
 			World.loadPoisFromJsonData(poiData);
@@ -81,9 +80,9 @@ var World = {
 		}
 	},
 };
-
+7
 /* 
 	Set a custom function where location changes are forwarded to. There is also a possibility to set AR.context.onLocationChanged to null. In this case the function will not be called anymore and no further location updates will be received. 
 */
-//AR.context.onLocationChanged = World.locationChanged;
-AR.context.onLocationChanged=null;
+AR.context.onLocationChanged = World.locationChanged;
+//World.init();
