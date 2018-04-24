@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import android.util.Log;
 
+import org.json.JSONObject;
 import org.w3c.dom.TypeInfo;
 
 /**
@@ -62,26 +63,23 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
 
     public void displayDirection(String[] directionsList)
     {
+        mMap.addPolyline(null);
+        JSONObject LatLngObj = new JSONObject();
         List<LatLng> cLatLong = new ArrayList<LatLng>(); //this value stores all the latitude and longitude values from source to destination
-        double aLong;
         int count=directionsList.length;
         for(int i=0;i<count;i++)
         {
             PolylineOptions options=new PolylineOptions();
             options.color(Color.RED);
             options.width(10);
-            aLong = latLng.longitude;
             options.addAll(PolyUtil.decode(directionsList[i]));
             for (int j = 0; j< options.getPoints().size(); j++) {
                 cLatLong.add(new LatLng(options.getPoints().get(j).latitude, options.getPoints().get(j).longitude));
-//                Log.d("latlong", String.valueOf(cLatLong));
-            }
-            Log.d("latlong", String.valueOf(options.getPoints().size()));
-//            System.out.println("ALAT \n\n" + cLatLong +"\n\n" + "ALONG \n\n" + options.getPoints() + "\n\n");
-
-
+                LatLngObj = {
+                        "Latitude"  : cLatLong.get(j).latitude,
+                        "Longitude" : cLatLong.get(j).longitude
+            };
             mMap.addPolyline(options);
         }
-        System.out.println("ALAT \n\n" + cLatLong.size() +"\n\n");
     }
 }
