@@ -14,6 +14,7 @@ import com.google.maps.android.PolyUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import android.util.Log;
@@ -67,8 +68,8 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
     }
 
     public void displayDirection(String[] directionsList) throws JSONException {
-//        JSONObject LatLngObj = new JSONObject();
-//        JSONObject coordinates = new JSONObject();
+        Collection<JSONObject> LatLngObj = new ArrayList<JSONObject>();
+        JSONObject coordinates = new JSONObject();
         List<LatLng> cLatLong = new ArrayList<LatLng>(); //this value stores all the latitude and longitude values from source to destination
         int count=directionsList.length;
         for(int i=0;i<count;i++)
@@ -79,8 +80,12 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
             options.addAll(PolyUtil.decode(directionsList[i]));
             for (int j = 0; j< options.getPoints().size(); j++) {
                 cLatLong.add(new LatLng(options.getPoints().get(j).latitude, options.getPoints().get(j).longitude));
+                coordinates.put("Latitude", options.getPoints().get(j).latitude);
+                coordinates.put("Longitude", options.getPoints().get(j).longitude);
+                LatLngObj.add(coordinates);
             }
             mMap.addPolyline(options);
         }
-        }
+        Log.d("latlong", LatLngObj.toString());
     }
+}
