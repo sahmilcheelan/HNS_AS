@@ -76,6 +76,7 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
                 cLatLong.add(new LatLng(options.getPoints().get(j).latitude, options.getPoints().get(j).longitude));
 //                Log.d("latlong", String.valueOf(cLatLong));
             }
+
             Log.d("latlong", String.valueOf(options.getPoints().size()));
 //            System.out.println("ALAT \n\n" + cLatLong +"\n\n" + "ALONG \n\n" + options.getPoints() + "\n\n");
 
@@ -83,5 +84,6 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
             mMap.addPolyline(options);
         }
         System.out.println("ALAT \n\n" + cLatLong.size() +"\n\n");
+
     }
 }

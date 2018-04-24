@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.wikitude.architect.ArchitectStartupConfiguration;
 import com.wikitude.architect.ArchitectView;
 import com.example.cheelan.hns.MapsActivity;
@@ -55,16 +56,18 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
         architectView.onPostCreate();
         //architectView.setLocation(clat,clon, 100);
 
+
       //architectView.setLocation(11.0516533,72.9714383,13,10);
 
 
         try {
-            this.architectView.load( "file:///android_asset/demo3/index.html" );
+            this.architectView.load( "file:///android_asset/demo4/index.html" );
             architectView.setLocation( 13.128628403018228,74.89088584566348,16,1);
            // architectView.setLocation(latitude, longitude, altitude, accuracy);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //architectView.callJavascript("World.getDataFromNative('"+testurl+"');");
     }
 
     @Override
@@ -142,7 +145,7 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
                 newStatus = "out of service service";
                 break;
             case LocationProvider.TEMPORARILY_UNAVAILABLE:
-                newStatus = "Temporarily available";
+                newStatus = "Temporarily unavailable";
                 break;
             case LocationProvider.AVAILABLE:
                 newStatus = "available";
