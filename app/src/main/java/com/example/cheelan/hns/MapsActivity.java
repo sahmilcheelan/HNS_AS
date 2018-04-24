@@ -33,7 +33,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.internal.IPolylineDelegate;
 
 import java.io.IOException;
 import java.util.List;
@@ -133,10 +135,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case R.id.B_search:
 
             {
+                mMap.clear();
+                MarkerOptions markerOptions = new MarkerOptions();
                 EditText tf_location = findViewById(R.id.TF_location);
                 String location = tf_location.getText().toString();
                 List<Address> addressList = null;
-                MarkerOptions markerOptions = new MarkerOptions();
                 if (!location.equals("")) {
                     Geocoder geocoder = new Geocoder(this);
                     try {
@@ -180,7 +183,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             
             case R.id.B_to:
-
                 Toast.makeText(MapsActivity.this,"showing",Toast.LENGTH_LONG).show();
               dataTransfer =  new Object[3];
               url = getDirectionsUrl();

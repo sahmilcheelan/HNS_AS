@@ -8,6 +8,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.PolyUtil;
 
@@ -17,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import android.util.Log;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.TypeInfo;
 
@@ -52,19 +54,21 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
     protected void onPostExecute(String s) {
 
 
-       String [] directionsList;
+        String [] directionsList;
         DataParser parser=new DataParser();
         directionsList=parser.parseDirections(s);
-        displayDirection(directionsList);
-
+        try {
+            displayDirection(directionsList);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
-    public void displayDirection(String[] directionsList)
-    {
-        mMap.addPolyline(null);
-        JSONObject LatLngObj = new JSONObject();
+    public void displayDirection(String[] directionsList) throws JSONException {
+//        JSONObject LatLngObj = new JSONObject();
+//        JSONObject coordinates = new JSONObject();
         List<LatLng> cLatLong = new ArrayList<LatLng>(); //this value stores all the latitude and longitude values from source to destination
         int count=directionsList.length;
         for(int i=0;i<count;i++)
@@ -75,11 +79,8 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
             options.addAll(PolyUtil.decode(directionsList[i]));
             for (int j = 0; j< options.getPoints().size(); j++) {
                 cLatLong.add(new LatLng(options.getPoints().get(j).latitude, options.getPoints().get(j).longitude));
-                LatLngObj = {
-                        "Latitude"  : cLatLong.get(j).latitude,
-                        "Longitude" : cLatLong.get(j).longitude
-            };
+            }
             mMap.addPolyline(options);
         }
+        }
     }
-}
