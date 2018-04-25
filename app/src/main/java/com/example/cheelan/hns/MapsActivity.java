@@ -49,11 +49,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public GoogleMap mMap;
     private GoogleApiClient client;
     private LocationRequest locationRequest;
-    private  Location lastLocation;
+    public  Location lastLocation;
     private Marker currentLocationMarker;
     public double latitude,longitude;
-    double end_latitude,end_longitude;
-    double check1,check2;
+    public double end_latitude,end_longitude;
+   public double check1,check2;
     int PROXIMITY_RADIUS=5000;
     public static final int REQUEST_LOCATION_CODE=99;
 

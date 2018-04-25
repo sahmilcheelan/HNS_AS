@@ -12,7 +12,7 @@ var World = {
 			First a location where the model should be displayed will be defined. This location will be relativ to the user.	
 		*/
 		//var location = new AR.RelativeLocation(null,5,0,0);
-	var location=new AR.GeoLocation(13.0516533,74.9714383);
+	var location=new AR.GeoLocation(13.128628403018228,74.89088584566348,16);
 	//var location=new AR.GeoLocation(11.0516533,71.9714383);
 	//13.0533693,74.9714111
 	//		var location = new AR.RelativeLocation(location1, 5, 0, 2);
@@ -21,7 +21,7 @@ var World = {
 		/*
 			Next the model object is loaded.
 		*/
-		var modelEarth = new AR.Model("assets/indi.png", {
+		var modelEarth = new AR.Model("assets/earth.wt3", {
 			onLoaded: this.worldLoaded,
 			scale: {
 				x: 1,
