@@ -93,9 +93,9 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-       // architectView.callJavascript("World.loadPoisFromJsonDataFn("+ coordinates +");");
+        architectView.callJavascript("World.loadPoisFromJsonDataFn("+ coordinates +");");
         Log.d("checkng",coordinates.toString());
-        Log.d("check",mapsActivity.LatLngObj.toString());
+        Log.d("check123",architectView.toString());
 
     }
 

@@ -24,6 +24,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.TypeInfo;
 
+
+
 /**
  * Created by cheelan on 28-02-2018.
  */
@@ -77,7 +79,7 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
     public void displayDirection(String[] directionsList) throws JSONException {
         JSONObject coordinates = new JSONObject();
         JSONArray checkLat=new JSONArray();
-       // List<LatLng> cLatLong = new ArrayList<LatLng>(); //this value stores all the latitude and longitude values from source to destination
+//        List<LatLng> cLatLong = new ArrayList<LatLng>(); //this value stores all the latitude and longitude values from source to destination
         int count=directionsList.length;
         for(int i=0;i<count;i++)
         {
@@ -94,22 +96,17 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
                 mapsActivity.LatLngObj.add(coordinates);
             }
 
-            Log.d("latlong", String.valueOf(options.getPoints().size()));
-            Log.d("check",coordinates.toString());
-
 //            System.out.println("ALAT \n\n" + cLatLong +"\n\n" + "ALONG \n\n" + options.getPoints() + "\n\n");
 
 
             mMap.addPolyline(options);
         }
-        System.out.println("ALAT \n\n" + mapsActivity.cLatLong.size() +"\n\n");
 
-
-          //  mMap.addPolyline(options);
-        Log.d("latlong", mapsActivity.LatLngObj.toString());
-       // getCoordinates();
-        //return LatLngObj;
+//        mMap.addPolyline(options);
+//        getCoordinates();
+//        return LatLngObj;
         }
+
 
         public double getCoordinates(){
 

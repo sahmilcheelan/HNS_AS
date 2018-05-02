@@ -1,6 +1,5 @@
 // implementation of AR-Experience (aka "World")
 console.log('Start');
-module.exports = function demoCheck() {
 var World = {
 	// you may request new data from server periodically, however: in this sample data is only requested once
 	isRequestingData: false,
@@ -22,11 +21,11 @@ var World = {
 	// called to inject new POI data
 	loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
 
-	console.log('YOOOO', poiData);
+	console.log('YOOOO');
 
 		// empty list of visible markers
 		World.markerList = [];
-		console.Log("abcdef",poiData[0].latitude);
+		console.log("abcdef");
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
@@ -35,12 +34,12 @@ var World = {
 		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
 		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
 			var singlePoi = {
-				"id":"1",// poiData[currentPlaceNr].id,
+				"id": poiData[currentPlaceNr].id,
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
 				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
-				"altitude": "0",//parseFloat(poiData[currentPlaceNr].altitude),
-				"title": "check",//poiData[currentPlaceNr].name,
-				"description": "abcd"//poiData[currentPlaceNr].description
+				"altitude": parseFloat(poiData[currentPlaceNr].altitude),
+				"title": poiData[currentPlaceNr].name,
+				"description": poiData[currentPlaceNr].description
 			};
 
 			World.markerList.push(new Marker(singlePoi));
@@ -119,15 +118,6 @@ var World = {
 
 };
 
-var demoObj = {
-latitude: "13.128628403018228d+0.0",
-longitude: "74.89088584566348d"
-};
-
-World.loadPoisFromJsonData(demoObj);
-
-console.log('YOMAMA', World);
-
 var Helper = {
 
 	/* 
@@ -148,14 +138,10 @@ var Helper = {
 		return poiData;
 	}
 }
-console.log('hhhhhh');
 
-console.log('YYYYY', Helper);
-
-//World.loadPoisFromJsonData(myJsonData);
+World.loadPoisFromJsonData(myJsonData);
 /* forward locationChanges to custom function */
-//AR.context.onLocationChanged = World.locationChanged; red commeted
+AR.context.onLocationChanged = World.locationChanged; // red commented
 
 /* forward clicks in empty area to World */
-//AR.context.onScreenClick = World.onScreenClick; red commented
-}
+AR.context.onScreenClick = World.onScreenClick; // red commented
