@@ -30,9 +30,13 @@
             android:layout_marginTop="12dp"
             android:ems="12"
             android:inputType="textPersonName"
+<<<<<<< HEAD
             android:text="Place"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"/>
+=======
+            android:text="moodbidri" />
+>>>>>>> d9a8db3e055cab5b28f08d2b32faae4b15b89f61
 
         <Button
             android:id="@+id/B_search"
