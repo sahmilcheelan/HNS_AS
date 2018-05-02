@@ -22,7 +22,7 @@ var World = {
 
 		// empty list of visible markers
 		World.markerList = [];
-
+		console.Log("abcdef",poiData[0].latitude);
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
@@ -31,12 +31,12 @@ var World = {
 		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
 		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
 			var singlePoi = {
-				"id": poiData[currentPlaceNr].id,
+				"id":"1",// poiData[currentPlaceNr].id,
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
 				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
-				"altitude": parseFloat(poiData[currentPlaceNr].altitude),
-				"title": poiData[currentPlaceNr].name,
-				"description": poiData[currentPlaceNr].description
+				"altitude": "0",//parseFloat(poiData[currentPlaceNr].altitude),
+				"title": "check",//poiData[currentPlaceNr].name,
+				"description": "abcd"//poiData[currentPlaceNr].description
 			};
 
 			World.markerList.push(new Marker(singlePoi));
@@ -135,6 +135,7 @@ var Helper = {
 		return poiData;
 	}
 }
+console.log('hhhhhh');
 
 //World.loadPoisFromJsonData(myJsonData);
 /* forward locationChanges to custom function */

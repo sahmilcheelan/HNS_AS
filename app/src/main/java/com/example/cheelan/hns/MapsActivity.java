@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,9 +34,15 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.internal.IPolylineDelegate;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
@@ -46,6 +53,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleMap.OnMarkerDragListener
 {
 
+    public static Collection<JSONObject> LatLngObj = new ArrayList<JSONObject>();
+    public  static List<LatLng> cLatLong = new ArrayList<LatLng>();
     public GoogleMap mMap;
     private GoogleApiClient client;
     private LocationRequest locationRequest;
@@ -133,10 +142,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case R.id.B_search:
 
             {
+                mMap.clear();
+                MarkerOptions markerOptions = new MarkerOptions();
                 EditText tf_location = findViewById(R.id.TF_location);
                 String location = tf_location.getText().toString();
                 List<Address> addressList = null;
-                MarkerOptions markerOptions = new MarkerOptions();
                 if (!location.equals("")) {
                     Geocoder geocoder = new Geocoder(this);
                     try {
@@ -180,7 +190,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             
             case R.id.B_to:
-
                 Toast.makeText(MapsActivity.this,"showing",Toast.LENGTH_LONG).show();
               dataTransfer =  new Object[3];
               url = getDirectionsUrl();
@@ -190,12 +199,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
               //dataTransfer[2]=new LatLng(end_latitude,end_longitude);
                 dataTransfer[2]=new LatLng(check1,check2);
 
-              getDirectionsData.execute(dataTransfer);
-
+                getDirectionsData.execute(dataTransfer);
+              //  Log.d("latlong", LatLngObj.toString());
               break;
 
             case R.id.ar_button:
+             //   Log.d("latlong", LatLngObj.toString());
                 Intent i = new Intent(getApplicationContext(),WikiActivity.class);
+
                 startActivity(i);
                 setContentView(R.layout.activity_wiki);
 
