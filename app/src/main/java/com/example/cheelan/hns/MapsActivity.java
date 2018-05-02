@@ -8,6 +8,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 
+import android.location.LocationManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -64,6 +66,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
             checkLocationPermission();
@@ -167,22 +171,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             break;
 
-            case  R.id.B_hospital:
-                mMap.clear();
-                String hospital="hospital";
-                String url=getUrl(latitude,longitude,hospital);
+            //case  R.id.B_hospital:
+              //  mMap.clear();
+                //String hospital="hospital";
+                //String url=getUrl(latitude,longitude,hospital);
 
-                dataTransfer[0]=mMap;
-                dataTransfer[1]=url;
+                //dataTransfer[0]=mMap;
+                //dataTransfer[1]=url;
 
 
-                getNearbyPlacesData.execute(dataTransfer);
+//                getNearbyPlacesData.execute(dataTransfer);
 
-                Toast.makeText(MapsActivity.this,"showing nearby hospitals",Toast.LENGTH_LONG).show();
-                break;
+  //              Toast.makeText(MapsActivity.this,"showing nearby hospitals",Toast.LENGTH_LONG).show();
+    //            break;
 
             
             case R.id.B_to:
+                String url;
                 Toast.makeText(MapsActivity.this,"showing",Toast.LENGTH_LONG).show();
               dataTransfer =  new Object[3];
               url = getDirectionsUrl();

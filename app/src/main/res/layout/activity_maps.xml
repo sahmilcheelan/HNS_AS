@@ -1,6 +1,7 @@
 <RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -8,10 +9,9 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout7"
         tools:context="com.example.cheelan.hns.MapsActivity" />
 
     <LinearLayout
@@ -26,59 +26,53 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="12dp"
-            android:ems="10"
+            android:ems="12"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Place"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"/>
 
         <Button
             android:id="@+id/B_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/TF_location"
-            android:layout_toEndOf="@+id/TF_location"
-            android:layout_toRightOf="@+id/TF_location"
+            android:layout_above="@+id/map"
+            android:layout_alignStart="@+id/ar_button"
+            android:layout_marginStart="11dp"
             android:onClick="onClick"
-            android:text="Search" />
+            android:text="Search"
+            android:background="@drawable/ic_button"
+
+            android:textColor="#048fae"/>
+       />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/B_hospital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout7"
-        android:layout_marginTop="22dp"
-        android:onClick="onClick"
-        android:text="Hospital" />
 
     <Button
         android:id="@+id/B_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/B_hospital"
-        android:layout_alignBottom="@+id/B_hospital"
-        android:layout_marginLeft="33dp"
-        android:layout_marginStart="33dp"
-        android:layout_toEndOf="@+id/B_hospital"
-        android:layout_toRightOf="@+id/B_hospital"
-        android:onClick="onClick"
-        android:text="To" />
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="17dp"
+        android:layout_toLeftOf="@+id/button2"
+        android:background="@drawable/ic_subdirectory_arrow_right_black_24dp"
+        android:onClick="onClick" />
+
 
     <Button
-        android:id="@+id/ar_button"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/B_to"
-        android:layout_alignBottom="@+id/B_to"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
-        android:layout_toEndOf="@+id/B_to"
-        android:layout_toRightOf="@+id/B_to"
-        android:onClick="onClick"
-        android:text="AR" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="18dp"
+        android:width="2dp"
+        android:background="@drawable/ic_drive_eta_black_24dp"
+        android:onClick="onClick" />
+
+
 
 </RelativeLayout>
