@@ -96,9 +96,6 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
                 mapsActivity.LatLngObj.add(coordinates);
             }
 
-//            System.out.println("ALAT \n\n" + cLatLong +"\n\n" + "ALONG \n\n" + options.getPoints() + "\n\n");
-
-
             mMap.addPolyline(options);
         }
 
