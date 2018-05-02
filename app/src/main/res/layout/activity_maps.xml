@@ -1,5 +1,6 @@
 <RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:keepScreenOn="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,7 +30,7 @@
             android:layout_marginTop="12dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="moodbidri" />
+            android:text="Search" />
 
         <Button
             android:id="@+id/B_search"
