@@ -10,13 +10,20 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.util.SimpleArrayMap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.beyondar.android.world.World;
+import com.google.android.gms.maps.model.LatLng;
 import com.wikitude.architect.ArchitectStartupConfiguration;
 import com.wikitude.architect.ArchitectView;
 import com.example.cheelan.hns.MapsActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.Collection;
 
 public class WikiActivity extends AppCompatActivity implements LocationListener {
 
@@ -42,7 +49,7 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
         final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration();
         config.setLicenseKey( "ORJxysP8GFfeXrAu4GBqJLkJSst8vbItMVMI/6GHqtMo2lMGdVY69Tfk9fXVL2BTMpfoSCw2cuCNIK8gR/SRaIR6GTMx9DgoxQYHi/r6ZEm7diUW9tFtuJPQ+Pl7H9opkJ7Z5vqKYiBL+cObdI04GFzIHkgP1viT+/orYpXPllpTYWx0ZWRfX2AXHnE+dUERuxJXU+uHlzlQ1swKXOYl+RAbk+f3STKBN5ELYKUTtNBwHWBHD1fDZ0jML4buq09d0x8Ps9BD7gO9p7xMlhoXzCx2y2Mm4YTh9jlZprKK0G+nRFofqPfhw4XZA+vP0rPMNA/zhw58HT1B09LbB0g/9/cXj6C2MbTdwG8X05O6+h9BRIv4OZXkQUvBWb0nGwZ1V9hvWIQZgUQ9wCc2ktJm8cpBNysA80eygrcjyRiWpsstdZpSu3pBvt60wsnkVHyacnBDl9BdC7lYzbpGIewvnhWzD+de7j4jrLEbEOBYhHlr7hQRItWatqtHBNbRQ8nqM4RcThObptVxIMI4FvCuCAl4xEXsyqeKfA6oEDiY1o0plNXLnQP7BpDek+rqcBYT2Brt5Qcwn7O5v/Mn2Hv5zcwl1wEslwT2eBM1D6TxIQWhi55fZOPbKPeOpCjIYDNzNX/qblUAypr7MRmS0UDbfqvM+ZI6nSk3soU4t7uIzac=" );
         this.architectView.onCreate( config );
-
+      // architectView.callJavascript("World.loadPoisFromJsonDataFn("+mapsActivity.LatLngObj+")");
         //locationProvider = new LocationProvider(this,this);
     }
     @Override
@@ -51,11 +58,20 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
 
         //clat=mapsActivity.check1;
         //clon=mapsActivity.check2;
+        //MapsActivity mapsActivity=new MapsActivity();
         Toast.makeText(this,"check",Toast.LENGTH_LONG).show();
         architectView.onPostCreate();
         //architectView.setLocation(clat,clon, 100);
 
-      //architectView.setLocation(11.0516533,72.9714383,13,10);
+        //GetDirectionsData getDirectionsData=new GetDirectionsData();
+
+            //double a=getDirectionsData.getCoordinates();
+        Log.d("latlong", mapsActivity.cLatLong.toString());
+          //  System.out.println("ALAT \n\n" + a +"\n\n");
+
+
+
+        //architectView.setLocation(11.0516533,72.9714383,13,10);
 
 
         try {
@@ -65,6 +81,22 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        JSONObject coordinates = new JSONObject();
+        try {
+            coordinates.put("id",1);
+            coordinates.put("latitude",13.128628403018228);
+            coordinates.put("longitude",74.89088584566348);
+            coordinates.put("name","check");
+            coordinates.put("description","abcdefghijklmnop");
+
+           // coordinates.put("altitude",0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+       // architectView.callJavascript("World.loadPoisFromJsonDataFn("+ coordinates +");");
+        Log.d("checkng",coordinates.toString());
+        Log.d("check",mapsActivity.LatLngObj.toString());
+
     }
 
     @Override
@@ -142,7 +174,7 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
                 newStatus = "out of service service";
                 break;
             case LocationProvider.TEMPORARILY_UNAVAILABLE:
-                newStatus = "Temporarily available";
+                newStatus = "Temporarily unavailable";
                 break;
             case LocationProvider.AVAILABLE:
                 newStatus = "available";
