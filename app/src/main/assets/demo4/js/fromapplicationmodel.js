@@ -22,7 +22,11 @@ var World = {
 
 		// empty list of visible markers
 		World.markerList = [];
-		console.log('inside'+parseFloat(poiData[0].latitude));
+		console.log(typeof poiData);
+		console.log('inside1'+poiData);
+		console.log('inside2'+poiData[0].Latitude);
+		console.log('inside3'+poiData[0]);
+		console.log('inside4'+poiData.length);
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
@@ -31,15 +35,16 @@ var World = {
 		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
 		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
 			var singlePoi = {
-				//"id": poiData[currentPlaceNr].id,
 
-				"latitude": 13.128628403018228,//parseFloat(poiData[currentPlaceNr].latitude),
-				"longitude": 74.89088584566348,//parseFloat(poiData[currentPlaceNr].longitude),
-				"altitude": 16,//parseFloat(poiData[currentPlaceNr].altitude),
-				//"title": poiData[currentPlaceNr].name,
-				//"description": poiData[currentPlaceNr].description
+				"id":currentPlaceNr+1, //poiData[currentPlaceNr].id,
+
+				"latitude": parseFloat(poiData[currentPlaceNr].Latitude),
+				"longitude":parseFloat(poiData[currentPlaceNr].Longitude),
+				"altitude": 0, //parseFloat(poiData[currentPlaceNr].altitude),
+				"title": "",//poiData[currentPlaceNr].name,
+				"description":""// poiData[currentPlaceNr].description
 			};
-
+console.log(currentPlaceNr);
 			World.markerList.push(new Marker(singlePoi));
 		}
 

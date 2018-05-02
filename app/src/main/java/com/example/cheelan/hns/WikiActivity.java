@@ -97,9 +97,10 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //architectView.callJavascript(" World.loadPoisFromJsonData("+ coordinates +");");
-        architectView.callJavascript("World.loadPoisFromJsonData("+ mapsActivity.cLatLong +");");
-      //  Log.d("checkng",coordinates.toString());
+        //architectView.callJavascript(" World.loadPoisFromJsonData('"+ coordinates +"');");
+        architectView.callJavascript("World.loadPoisFromJsonData("+ mapsActivity.LatLngObj +");");
+        Log.d("checkng",mapsActivity.cLatLong.toString());
+
         Log.d("check",mapsActivity.LatLngObj.toString());
 
     }

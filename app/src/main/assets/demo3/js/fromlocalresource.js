@@ -23,7 +23,7 @@ var World = {
 
 		// empty list of visible markers
 		World.markerList = [];
-		console.log('ftwdfwt'+poiData[0].latitude);
+		console.log(typeof poiData);
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
