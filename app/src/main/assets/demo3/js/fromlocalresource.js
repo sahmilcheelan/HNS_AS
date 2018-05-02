@@ -1,4 +1,6 @@
 // implementation of AR-Experience (aka "World")
+console.log('Start');
+module.exports = function demoCheck() {
 var World = {
 	// you may request new data from server periodically, however: in this sample data is only requested once
 	isRequestingData: false,
@@ -19,6 +21,8 @@ var World = {
 
 	// called to inject new POI data
 	loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
+
+	console.log('YOOOO', poiData);
 
 		// empty list of visible markers
 		World.markerList = [];
@@ -115,6 +119,15 @@ var World = {
 
 };
 
+var demoObj = {
+latitude: "13.128628403018228d+0.0",
+longitude: "74.89088584566348d"
+};
+
+World.loadPoisFromJsonData(demoObj);
+
+console.log('YOMAMA', World);
+
 var Helper = {
 
 	/* 
@@ -136,9 +149,12 @@ var Helper = {
 	}
 }
 
+console.log('YYYYY', Helper);
+
 //World.loadPoisFromJsonData(myJsonData);
 /* forward locationChanges to custom function */
-AR.context.onLocationChanged = World.locationChanged;
+//AR.context.onLocationChanged = World.locationChanged; red commeted
 
 /* forward clicks in empty area to World */
-AR.context.onScreenClick = World.onScreenClick;
+//AR.context.onScreenClick = World.onScreenClick; red commented
+}
