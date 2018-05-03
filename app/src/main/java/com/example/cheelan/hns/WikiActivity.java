@@ -1,6 +1,7 @@
 package com.example.cheelan.hns;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -190,4 +191,11 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

@@ -167,7 +167,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         markerOptions.position(latLng);
                         markerOptions.title("your search result");
                         mMap.addMarker(markerOptions);
-                        mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                        LatLng demoLatLng = new LatLng(check1, check2);
+                        mMap.animateCamera(CameraUpdateFactory.newLatLng(demoLatLng));
 
                     }
                 }
@@ -178,34 +179,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             break;
 
-            //case  R.id.B_hospital:
-              //  mMap.clear();
-                //String hospital="hospital";
-                //String url=getUrl(latitude,longitude,hospital);
-
-                //dataTransfer[0]=mMap;
-                //dataTransfer[1]=url;
-
-
+//            case  R.id.B_hospital:
+//                mMap.clear();
+//                String hospital="hospital";
+//                String url=getUrl(latitude,longitude,hospital);
+//
+//                dataTransfer[0]=mMap;
+//                dataTransfer[1]=url;
+//
+//
 //                getNearbyPlacesData.execute(dataTransfer);
-
-  //              Toast.makeText(MapsActivity.this,"showing nearby hospitals",Toast.LENGTH_LONG).show();
-    //            break;
+//
+//                Toast.makeText(MapsActivity.this,"showing nearby hospitals",Toast.LENGTH_LONG).show();
+//                break;
 
             
             case R.id.B_to:
                 String url;
-                Toast.makeText(MapsActivity.this,"showing",Toast.LENGTH_LONG).show();
+                MarkerOptions mo = new MarkerOptions();
+//                Toast.makeText(MapsActivity.this,"showing",Toast.LENGTH_LONG).show();
               dataTransfer =  new Object[3];
               url = getDirectionsUrl();
+              DataParser dataparser = new DataParser();
               GetDirectionsData getDirectionsData=new GetDirectionsData();
               dataTransfer[0]=mMap;
               dataTransfer[1]=url;
-              //dataTransfer[2]=new LatLng(end_latitude,end_longitude);
-                dataTransfer[2]=new LatLng(check1,check2);
-
+//            dataTransfer[2]=new LatLng(end_latitude,end_longitude);
+              dataTransfer[2]=new LatLng(check1,check2);
+//
+//              mo.position((LatLng) dataTransfer[2]);
+//              Log.d("aaaaa", dataparser.distance+" aaa "+dataparser.duration);
+//              mo.title("Distance is "+dataparser.distance+" duration is "+dataparser.duration);
+//              mMap.addMarker(mo);
                 getDirectionsData.execute(dataTransfer);
-              //  Log.d("latlong", LatLngObj.toString());
               break;
 
             case R.id.ar_button:
@@ -360,4 +366,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         end_latitude=marker.getPosition().latitude;
         end_longitude=marker.getPosition().longitude;
     }
+
+
 }

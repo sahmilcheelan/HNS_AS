@@ -15,13 +15,16 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
  * Created by cheelan on 27-02-2018.
  */
 
+
 public class DataParser {
+
+    public String duration="";
+    public String distance="";
 
     private HashMap<String ,String >getDuration(JSONArray googleDirectionsJson)
     {
         HashMap<String ,String > googleDirectionsMap=new HashMap<>();
-        String duration="";
-        String distance="";
+
 
         Log.d("json response",googleDirectionsJson.toString());
         try {

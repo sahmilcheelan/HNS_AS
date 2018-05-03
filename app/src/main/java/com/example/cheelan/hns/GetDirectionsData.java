@@ -84,7 +84,7 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
         {
             PolylineOptions options=new PolylineOptions();
             options.color(Color.RED);
-            options.width(10);
+            options.width(20);
             options.addAll(PolyUtil.decode(directionsList[i]));
             for (int j = 0; j< options.getPoints().size(); j++) {
                 JSONObject coordinates = new JSONObject();
@@ -93,24 +93,24 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
                 coordinates.put("Longitude", options.getPoints().get(j).longitude);
 
                 //checkLat.put("Latutude",options.getPoints().get(j).latitude);
-                Log.d("latt",String.valueOf(options.getPoints().get(j).latitude));
+//                Log.d("latt",String.valueOf(options.getPoints().get(j).latitude));
                mapsActivity.LatLngObj.add(coordinates);
                 //Log.d("check",mapsActivity.LatLngObj.toString());
             }
            // LatLngObj.add(coordinates);
-            Log.d("latlong", String.valueOf(options.getPoints().size()));
-            Log.d("check",mapsActivity.LatLngObj.toString());
+//            Log.d("latlong", String.valueOf(options.getPoints().size()));
+//            Log.d("check",mapsActivity.LatLngObj.toString());
 
 //            System.out.println("ALAT \n\n" + cLatLong +"\n\n" + "ALONG \n\n" + options.getPoints() + "\n\n");
 
 
             mMap.addPolyline(options);
         }
-        System.out.println("ALAT \n\n" + mapsActivity.cLatLong.size() +"\n\n");
+//        System.out.println("ALAT \n\n" + mapsActivity.cLatLong.size() +"\n\n");
 
 
           //  mMap.addPolyline(options);
-        Log.d("latlong", mapsActivity.cLatLong.toString());
+//        Log.d("latlong", mapsActivity.cLatLong.toString());
        // getCoordinates();
         //return LatLngObj;
         }

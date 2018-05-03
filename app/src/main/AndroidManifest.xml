@@ -68,9 +68,10 @@
             android:name=".Ar_Activity"
             android:label="@string/title_activity_ar_"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".WikiActivity"
-            android:configChanges="screenSize|orientation"
-            ></activity>
+        <activity
+            android:name=".WikiActivity"
+            android:configChanges="screenSize|orientation" />
+        <activity android:name=".MainDistanceActivity"></activity>
     </application>
 
 </manifest>
