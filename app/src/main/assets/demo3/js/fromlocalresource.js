@@ -1,5 +1,9 @@
 // implementation of AR-Experience (aka "World")
+<<<<<<< HEAD
 console.log('Start');
+=======
+console.log('abcdef');
+>>>>>>> 9e30cc20c665228e172fced73a2aefea8d165a5f
 var World = {
 	// you may request new data from server periodically, however: in this sample data is only requested once
 	isRequestingData: false,
@@ -25,7 +29,11 @@ var World = {
 
 		// empty list of visible markers
 		World.markerList = [];
+<<<<<<< HEAD
 		console.log("abcdef");
+=======
+		console.log('ftwdfwt'+poiData[0].latitude);
+>>>>>>> 9e30cc20c665228e172fced73a2aefea8d165a5f
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
@@ -34,12 +42,21 @@ var World = {
 		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
 		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
 			var singlePoi = {
+<<<<<<< HEAD
 				"id": poiData[currentPlaceNr].id,
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
 				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
 				"altitude": parseFloat(poiData[currentPlaceNr].altitude),
 				"title": poiData[currentPlaceNr].name,
 				"description": poiData[currentPlaceNr].description
+=======
+				"id":1,// poiData[currentPlaceNr].id,
+				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
+				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
+				"altitude":0,// parseFloat(poiData[currentPlaceNr].altitude),
+				"title":"checing",// poiData[currentPlaceNr].name,
+				"description": "to check",//poiData[currentPlaceNr].description
+>>>>>>> 9e30cc20c665228e172fced73a2aefea8d165a5f
 			};
 
 			World.markerList.push(new Marker(singlePoi));
@@ -113,7 +130,7 @@ var World = {
 		Comment out previous 2 lines and use the following line > instead < to use static values 1:1. 
 		*/
 
-		 World.loadPoisFromJsonData(myJsonData);
+		// World.loadPoisFromJsonData(myJsonData);
 	}
 
 };

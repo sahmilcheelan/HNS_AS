@@ -75,8 +75,12 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
 
 
         try {
-            this.architectView.load( "file:///android_asset/demo3/index.html" );
+
+            this.architectView.load( "file:///android_asset/demo4/index.html" );
+
+
             architectView.setLocation( 13.128628403018228,74.89088584566348,16,1);
+
            // architectView.setLocation(latitude, longitude, altitude, accuracy);
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,13 +93,13 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
             coordinates.put("name","check");
             coordinates.put("description","abcdefghijklmnop");
 
-           // coordinates.put("altitude",0);
+            // coordinates.put("altitude",0);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        architectView.callJavascript("World.loadPoisFromJsonDataFn("+ coordinates +");");
-        Log.d("checkng",coordinates.toString());
-        Log.d("check123",architectView.toString());
+        //architectView.callJavascript(" World.loadPoisFromJsonData("+ coordinates +");");
+        architectView.callJavascript("World.loadPoisFromJsonData("+ mapsActivity.cLatLong +");");
+      //  Log.d("checkng",coordinates.toString());
 
     }
 

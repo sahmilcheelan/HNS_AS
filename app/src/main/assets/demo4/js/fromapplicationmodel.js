@@ -1,4 +1,5 @@
 // implementation of AR-Experience (aka "World")
+console.log('start');
 var World = {
 	// different POI-Marker assets
 	markerDrawable_idle: null,
@@ -21,7 +22,7 @@ var World = {
 
 		// empty list of visible markers
 		World.markerList = [];
-
+		console.log('inside'+parseFloat(poiData[0].latitude));
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
@@ -92,7 +93,7 @@ var World = {
 	}
 
 };
-
+console.log('end');
 /* forward locationChanges to custom function */
 AR.context.onLocationChanged = World.locationChanged;
 
