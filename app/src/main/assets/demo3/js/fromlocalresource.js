@@ -1,6 +1,5 @@
 // implementation of AR-Experience (aka "World")
 console.log('Start');
-module.exports = function demoCheck() {
 var World = {
 	// you may request new data from server periodically, however: in this sample data is only requested once
 	isRequestingData: false,
@@ -26,7 +25,7 @@ var World = {
 
 		// empty list of visible markers
 		World.markerList = [];
-
+		console.log(typeof poiData);
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
@@ -35,12 +34,12 @@ var World = {
 		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
 		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
 			var singlePoi = {
-				"id": poiData[currentPlaceNr].id,
+				"id":1,// poiData[currentPlaceNr].id,
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
 				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
-				"altitude": parseFloat(poiData[currentPlaceNr].altitude),
-				"title": poiData[currentPlaceNr].name,
-				"description": poiData[currentPlaceNr].description
+				"altitude":0,// parseFloat(poiData[currentPlaceNr].altitude),
+				"title":"checing",// poiData[currentPlaceNr].name,
+				"description": "to check",//poiData[currentPlaceNr].description
 			};
 
 			World.markerList.push(new Marker(singlePoi));
@@ -114,20 +113,10 @@ var World = {
 		Comment out previous 2 lines and use the following line > instead < to use static values 1:1. 
 		*/
 
-		 World.loadPoisFromJsonData(myJsonData);
+		// World.loadPoisFromJsonData(myJsonData);
 	}
 
 };
-
-var demoObj = {
-latitude: "13.128628403018228d+0.0",
-longitude: "74.89088584566348d"
-};
-
-World.loadPoisFromJsonData(demoObj);
-
-console.log('YOMAMA', World);
-
 var Helper = {
 
 	/* 
@@ -148,8 +137,6 @@ var Helper = {
 		return poiData;
 	}
 }
-
-console.log('YYYYY', Helper);
 
 //World.loadPoisFromJsonData(myJsonData);
 /* forward locationChanges to custom function */

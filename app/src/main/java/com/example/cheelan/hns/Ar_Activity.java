@@ -45,8 +45,8 @@ import java.util.ArrayList;
             MapsActivity mapsActivity=new MapsActivity();
 
 
-            lat=mapsActivity.lastLocation.getLatitude();
-            lon=mapsActivity.longitude;
+            //lat=mapsActivity.lastLocation.getLatitude();
+           // lon=mapsActivity.longitude;
             World world = new World(this);
 
 
@@ -56,8 +56,8 @@ import java.util.ArrayList;
 
 // User position (you can change it using the GPS listeners form Android
 // API)
-//world.setGeoPosition(13.128628403018228d,74.89088584566348d);
-            world.setGeoPosition(41.26533734214473d,1.925848038959814d);
+world.setGeoPosition(74.89088584566348d,13.128628403018228d);
+        //    world.setGeoPosition(41.26533734214473d,1.925848038959814d);
 
             mGoogleMapPlugin = new GoogleMapWorldPlugin(this);
             world.addPlugin(mGoogleMapPlugin);
@@ -71,8 +71,7 @@ import java.util.ArrayList;
 
             // Is it also possible to load the image asynchronously form internet
             GeoObject go2 = new GeoObject(2l);
-            go2.setGeoPosition(13.128628403018228d+0.05,
-                    74.89088584566348d);
+            go2.setGeoPosition(74.89088584566348d,13.128628403018228d);
             go2.setImageResource(R.drawable.test_2);
             go2.setName("Online image");
             // Also possible to get images from the SDcard

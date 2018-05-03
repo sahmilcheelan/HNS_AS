@@ -3,28 +3,28 @@ var myJsonData = [{
 	"longitude": "74.89088584566348",
                                             "latitude": "13.128628403018228",
 	"description": "This is the description of POI#1",
-	"altitude": "AR.CONST.UNKNOWN_ALTITUDE",
+	"altitude": "0",
 	"name": "POI#1"
 }, {
 	"id": "2",
 	"longitude": "74.99088584566348",
                                                 "latitude": "13.128628403018228",
     	"description": "This is the description of POI#1",
-    	"altitude": "AR.CONST.UNKNOWN_ALTITUDE",
+    	"altitude": "0",
     	"name": "POI#2"
 }, {
 	"id": "3",
 	"longitude": "74.9664748",
 	"latitude": "13.0506207",
 	"description": "This is the description of POI#3",
-	"altitude": "100.0",
+	"altitude": "0",
 	"name": "POI#3"
 }, {
 	"id": "4",
 	"longitude": "74.8520636",
 	"latitude": "12.9229922",
 	"description": "This is the description of POI#4",
-	"altitude": "50.0",
+	"altitude": "0",
 	"name": "POI#4"
 }, {
 	"id": "5",

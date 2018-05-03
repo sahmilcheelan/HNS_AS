@@ -8,6 +8,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 
+import android.location.LocationManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,9 +16,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -37,7 +40,11 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.internal.IPolylineDelegate;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
@@ -48,6 +55,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleMap.OnMarkerDragListener
 {
 
+    public  static Collection<JSONObject> LatLngObj = new ArrayList<JSONObject>();
+    public  static List<LatLng> cLatLong = new ArrayList<LatLng>();
     public GoogleMap mMap;
     private GoogleApiClient client;
     private LocationRequest locationRequest;
@@ -56,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public double latitude,longitude;
     public double end_latitude,end_longitude;
    public double check1,check2;
-    int PROXIMITY_RADIUS=5000;
+    int PROXIMITY_RADIUS=50;
     public static final int REQUEST_LOCATION_CODE=99;
 
 
@@ -64,6 +73,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
             checkLocationPermission();
@@ -167,22 +178,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             break;
 
-            case  R.id.B_hospital:
-                mMap.clear();
-                String hospital="hospital";
-                String url=getUrl(latitude,longitude,hospital);
+            //case  R.id.B_hospital:
+              //  mMap.clear();
+                //String hospital="hospital";
+                //String url=getUrl(latitude,longitude,hospital);
 
-                dataTransfer[0]=mMap;
-                dataTransfer[1]=url;
+                //dataTransfer[0]=mMap;
+                //dataTransfer[1]=url;
 
 
-                getNearbyPlacesData.execute(dataTransfer);
+//                getNearbyPlacesData.execute(dataTransfer);
 
-                Toast.makeText(MapsActivity.this,"showing nearby hospitals",Toast.LENGTH_LONG).show();
-                break;
+  //              Toast.makeText(MapsActivity.this,"showing nearby hospitals",Toast.LENGTH_LONG).show();
+    //            break;
 
             
             case R.id.B_to:
+                String url;
                 Toast.makeText(MapsActivity.this,"showing",Toast.LENGTH_LONG).show();
               dataTransfer =  new Object[3];
               url = getDirectionsUrl();
@@ -192,14 +204,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
               //dataTransfer[2]=new LatLng(end_latitude,end_longitude);
                 dataTransfer[2]=new LatLng(check1,check2);
 
-              getDirectionsData.execute(dataTransfer);
-
+                getDirectionsData.execute(dataTransfer);
+              //  Log.d("latlong", LatLngObj.toString());
               break;
 
             case R.id.ar_button:
+             //   Log.d("latlong", LatLngObj.toString());
                 Intent i = new Intent(getApplicationContext(),WikiActivity.class);
-                startActivity(i);
+
+               startActivity(i);
                 setContentView(R.layout.activity_wiki);
+
 
 
         }
