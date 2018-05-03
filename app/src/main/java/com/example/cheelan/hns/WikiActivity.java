@@ -79,24 +79,13 @@ public class WikiActivity extends AppCompatActivity implements LocationListener 
             this.architectView.load( "file:///android_asset/demo4/index.html" );
 
 
-            architectView.setLocation( 13.128628403018228,74.89088584566348,16,1);
+            architectView.setLocation( 13.128628403018228,74.89088584566348,0,1);
 
            // architectView.setLocation(latitude, longitude, altitude, accuracy);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        JSONObject coordinates = new JSONObject();
-        try {
-            coordinates.put("id",1);
-            coordinates.put("latitude",13.128628403018228);
-            coordinates.put("longitude",74.89088584566348);
-            coordinates.put("name","check");
-            coordinates.put("description","abcdefghijklmnop");
 
-            // coordinates.put("altitude",0);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         //architectView.callJavascript(" World.loadPoisFromJsonData('"+ coordinates +"');");
         architectView.callJavascript("World.loadPoisFromJsonData("+ mapsActivity.LatLngObj +");");
         Log.d("checkng",mapsActivity.cLatLong.toString());

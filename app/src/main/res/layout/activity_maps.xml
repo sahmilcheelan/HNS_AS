@@ -1,5 +1,6 @@
 <RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:keepScreenOn="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -30,7 +31,7 @@
             android:layout_marginTop="12dp"
             android:ems="12"
             android:inputType="textPersonName"
-            android:text="Place"
+            android:hint="Destiation"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"/>
 
@@ -57,13 +58,13 @@
 
         android:layout_alignParentBottom="true"
         android:layout_marginRight="17dp"
-        android:layout_toLeftOf="@+id/button2"
+        android:layout_toLeftOf="@+id/ar_button"
         android:background="@drawable/ic_subdirectory_arrow_right_black_24dp"
         android:onClick="onClick" />
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/ar_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

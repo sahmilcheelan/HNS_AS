@@ -75,7 +75,8 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
     }
 
     public void displayDirection(String[] directionsList) throws JSONException {
-        JSONObject coordinates = new JSONObject();
+
+       // Collection<JSONObject> LatLngObj = new ArrayList<JSONObject>();
         JSONArray checkLat=new JSONArray();
        // List<LatLng> cLatLong = new ArrayList<LatLng>(); //this value stores all the latitude and longitude values from source to destination
         int count=directionsList.length;
@@ -86,16 +87,19 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
             options.width(10);
             options.addAll(PolyUtil.decode(directionsList[i]));
             for (int j = 0; j< options.getPoints().size(); j++) {
+                JSONObject coordinates = new JSONObject();
                 mapsActivity.cLatLong.add(new LatLng(options.getPoints().get(j).latitude, options.getPoints().get(j).longitude));
                 coordinates.put("Latitude", options.getPoints().get(j).latitude);
                 coordinates.put("Longitude", options.getPoints().get(j).longitude);
+
                 //checkLat.put("Latutude",options.getPoints().get(j).latitude);
-
-                mapsActivity.LatLngObj.add(coordinates);
+                Log.d("latt",String.valueOf(options.getPoints().get(j).latitude));
+               mapsActivity.LatLngObj.add(coordinates);
+                //Log.d("check",mapsActivity.LatLngObj.toString());
             }
-
+           // LatLngObj.add(coordinates);
             Log.d("latlong", String.valueOf(options.getPoints().size()));
-            Log.d("check",coordinates.toString());
+            Log.d("check",mapsActivity.LatLngObj.toString());
 
 //            System.out.println("ALAT \n\n" + cLatLong +"\n\n" + "ALONG \n\n" + options.getPoints() + "\n\n");
 
@@ -106,7 +110,7 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
 
 
           //  mMap.addPolyline(options);
-        Log.d("latlong", mapsActivity.LatLngObj.toString());
+        Log.d("latlong", mapsActivity.cLatLong.toString());
        // getCoordinates();
         //return LatLngObj;
         }

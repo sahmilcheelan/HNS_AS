@@ -55,7 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleMap.OnMarkerDragListener
 {
 
-    public static Collection<JSONObject> LatLngObj = new ArrayList<JSONObject>();
+    public  static Collection<JSONObject> LatLngObj = new ArrayList<JSONObject>();
     public  static List<LatLng> cLatLong = new ArrayList<LatLng>();
     public GoogleMap mMap;
     private GoogleApiClient client;
@@ -65,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public double latitude,longitude;
     public double end_latitude,end_longitude;
    public double check1,check2;
-    int PROXIMITY_RADIUS=5000;
+    int PROXIMITY_RADIUS=50;
     public static final int REQUEST_LOCATION_CODE=99;
 
 
@@ -212,8 +212,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
              //   Log.d("latlong", LatLngObj.toString());
                 Intent i = new Intent(getApplicationContext(),WikiActivity.class);
 
-                startActivity(i);
+               startActivity(i);
                 setContentView(R.layout.activity_wiki);
+
 
 
         }
