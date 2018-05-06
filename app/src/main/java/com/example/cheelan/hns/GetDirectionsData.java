@@ -70,16 +70,12 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void displayDirection(String[] directionsList) throws JSONException {
+        JSONArray checkLat = new JSONArray();
+        int count = directionsList.length;
 
-       // Collection<JSONObject> LatLngObj = new ArrayList<JSONObject>();
-        JSONArray checkLat=new JSONArray();
-       // List<LatLng> cLatLong = new ArrayList<LatLng>(); //this value stores all the latitude and longitude values from source to destination
-        int count=directionsList.length;
         for(int i=0;i<count;i++)
         {
             PolylineOptions options=new PolylineOptions();
@@ -91,36 +87,17 @@ public class GetDirectionsData extends AsyncTask<Object,String ,String >{
                 mapsActivity.cLatLong.add(new LatLng(options.getPoints().get(j).latitude, options.getPoints().get(j).longitude));
                 coordinates.put("Latitude", options.getPoints().get(j).latitude);
                 coordinates.put("Longitude", options.getPoints().get(j).longitude);
-
-                //checkLat.put("Latutude",options.getPoints().get(j).latitude);
-//                Log.d("latt",String.valueOf(options.getPoints().get(j).latitude));
-               mapsActivity.LatLngObj.add(coordinates);
-                //Log.d("check",mapsActivity.LatLngObj.toString());
+                mapsActivity.LatLngObj.add(coordinates);
             }
-           // LatLngObj.add(coordinates);
-//            Log.d("latlong", String.valueOf(options.getPoints().size()));
-//            Log.d("check",mapsActivity.LatLngObj.toString());
-
-//            System.out.println("ALAT \n\n" + cLatLong +"\n\n" + "ALONG \n\n" + options.getPoints() + "\n\n");
-
 
             mMap.addPolyline(options);
         }
-//        System.out.println("ALAT \n\n" + mapsActivity.cLatLong.size() +"\n\n");
-
-
-          //  mMap.addPolyline(options);
-//        Log.d("latlong", mapsActivity.cLatLong.toString());
-       // getCoordinates();
-        //return LatLngObj;
-        }
-
-        public double getCoordinates(){
-
-            double a=mapsActivity.cLatLong.get(0).latitude;
-            return a;
-        }
-
-
     }
+
+    public double getCoordinates(){
+        double a=mapsActivity.cLatLong.get(0).latitude;
+        return a;
+    }
+
+}
 
