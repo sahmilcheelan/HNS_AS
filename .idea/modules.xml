@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HNS.iml" filepath="$PROJECT_DIR$/HNS.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HNS_AS.iml" filepath="$PROJECT_DIR$/HNS_AS.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
